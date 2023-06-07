@@ -2,7 +2,7 @@
 Program name: Salary Calc
 Author: JMcDonald
 date: 06/06/23
-note: This program is to calculate Pay
+note: This program is to calculate Pay, Both Hourly and Salary in USD
 """
 from os import system, name
 from time import sleep
