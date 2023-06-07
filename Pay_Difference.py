@@ -16,7 +16,7 @@ def clear():
         else:
                 _ = system('clear')
 clear()
-print("Simple Pay Calculator with Difference Calculation")
+print("Simple Pay Calculator with Difference Calculation By Josh McDonald")
 uname=input("What is your name? ")
 def ask_user():
         answer = input(uname +", Are you Salary? (y/n) ")
