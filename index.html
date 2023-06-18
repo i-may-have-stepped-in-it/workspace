@@ -1,24 +1,46 @@
-<!doctype html>
+<!-- <!doctype html>
 <html>
 
 <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+<meta charset="utf-8">
+<script type="text/javascript" src="brython.js"></script>
+<script type="text/javascript" src="brython_stdlib.js"></script>
 </head>
 
-<body>
-        <py-config>
-                packages=["colorama","os"]
-        </py-config>
-        <div id="Salary" class="alert alert-primary"></div>
-        <py-script src="Pay_Difference.py"></py-script>
-        <script>
-                function printsal(){ console.log( `In Python right now, sal_printed = ${pyscript.interpreter.globals.get('sal_printed')}`)
-        }
-        </script>
-        <button onclick="printsal()"> Click to get your results</button>
-
+<body onload="brython(1)">
+    <script type="text/python" src="Pay_Difference.py">
+    
+    </script>
 </body>
 
+</html>
+
+<!DOCTYPE html>
+<html> -->
+
+<head>
+    <title>Pay Difference Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.2/brython.js"></script>
+</head>
+<body>
+    <div id="output"></div>
+    <script type="text/python" src="./Pay_Difference.py"></script>
+    <script>
+    // Clear the output div
+    document.getElementById("output").innerHTML = "";
+
+    // Redirect the console output to the webpage
+    console.log = function(message) {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML += message + "<br>";
+    };
+    </script>
+    
+
+    <script>
+        window.onload = function() {
+            brython({debug: 1, indexedDB: false});
+        }
+    </script>
+</body>
 </html>

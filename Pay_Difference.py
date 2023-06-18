@@ -4,8 +4,8 @@ Author: JMcDonald
 date: 06/06/23
 note: This program is to calculate Pay, Both Hourly and Salary in USD
 """
-from os import system, name
-import builtins
+# from os import system, name
+# import builtins
 # from colorama import Fore
 # from colorama import Style
 # import tkinter as tk
@@ -14,13 +14,13 @@ import builtins
 
 def thanks():
         print(uname +", Thank you for using my calculator!")
-def clear():
-        if name == 'nt':
-                _ = system('cls')
-        else:
-                _ = system('clear')
-clear()
-print("Simple Pay Calculator with Difference Calculation By Josh McDonald")
+# def clear():
+#         if name == 'nt':
+#                 _ = system('cls')
+#         else:
+#                 _ = system('clear')
+# clear()
+# print("Simple Pay Calculator with Difference Calculation By Josh McDonald")
 uname=input("What is your name? ")
 def ask_user():
         answer = input(uname +", Are you Salary? (y/n) ")
@@ -259,7 +259,8 @@ while True: #loop start
                                         print("Your projected Annual Gross is $",(pay * 52), "based off of working all 52 weeks")
                                         print("Your projected Annual Net is $",(round(netan,2)))
                         else:()
-                sal_printed=sal_print()
+                # sal_printed=sal_print()
+                sal_print()
                 ansx=ans()
                 if ansx == True: #check answer for continuation or exit
                         continue
