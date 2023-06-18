@@ -127,12 +127,35 @@ def otx():
     except ValueError:
         print("Please enter a valid number")
         return otx()
+def tax():
+    try:
+        taxr=float(input("What is your local tax rate percentage? "))
+        return (taxr / 100) 
+    except ValueError:
+        print("Please enter a valid number")
+        return tax()
+def taxask():
+    taxaskq = input(uname +", Would you like to input your current local tax rate? (y/n) ")
+    try:
+        if taxaskq.lower() == 'y':
+            return tax()
+        elif taxaskq.lower() =='n':
+            return False
+        else:
+            print(f"Invalid response")
+            return taxask()
+    except Exception as error:
+            print(f"Please answer y or n")
+            print(error)
+            return taxask()
+        
 while True: #loop start
     salary=ask_user()
     if salary==True:
         #inputs from user
-        currentsalary=currentsal() 
+        currentsalary=currentsal()
         newsalary=newsal()
+        taxaskr=taxask()
         #rate=float(input("What is your hourly rate? "))#using float for partial dollar entry
         #otRate=rate*1.54
         grossdifference=(newsalary - currentsalary)
@@ -149,7 +172,7 @@ while True: #loop start
                 print(f"Your Estimated Bi-Weekly Pay Difference is $",biweeklydiff)
                 print(f"Your Estimated Bi Weekly Pay is $",biweekly)
                 print(f"Your Estimated Gross pay Difference is $",grossdifference)
-                print(f"Your Estimated Net Pay is $",(newsalary*.75),"based off of 25% for Taxes and Insurance")
+                print(f"Your Estimated Net Pay is $",(newsalary*(1 - taxaskr)))
 
         # print(f"Your Hourly pay difference is $",differencerounded) #output to user
         # print(f"Your Estimated Weekly Pay Difference is $",weeklydif)
@@ -158,7 +181,7 @@ while True: #loop start
         # print(f"Your Estimated Bi Weekly Pay is $",biweekly)
         # print(f"Your Esitmated Gross pay Difference is $",grossdifference)
         # print(f"Your Estimated Net Pay is $",(newsalary*.75),"based off of 25% for Taxes and Insurance")
-        # sal_print()
+        sal_print()
         ansy=ans()
         if(ansy==True): #check answer for continuation or exit      
                 continue
@@ -169,6 +192,7 @@ while True: #loop start
                 #input from user
                 currentwage=currentwa()
                 houworked=worked()
+                taxaskr=taxask()
                 updatex=update()
                 if updatex == True:
                         newwage=newwa()
@@ -190,37 +214,41 @@ while True: #loop start
                                 ot=otx()
                                 otRate=newwage*1.5
                                 pay=round(((newwage * hours)+(ot * otRate)),2) #calculations
-                                binet=((pay * 2) * .75)
+                                binet=((pay * 2)*(1 - taxaskr))
+                                netan=((pay * 52) * (1 - taxaskr))
                                 def sal_print():                                
                                         print("Your projected pay is $",pay,"for",hours+ot,"hours") #output to user
                                         print("Your projected Bi-Weekly pay is $",(pay * 2))
-                                        print("Your projected Bi-Weekly Net is $",(round(binet,2)),"based off of 25% for Taxes and Insurance")
+                                        print("Your projected Bi-Weekly Net is $",(round(binet,2)))
+                                        print("Your projected Annual Gross is $",(pay * 52), "based off of working all 52 weeks")
+                                        print("Your projected Annual Net is $",(round(netan,2)))
                         else:()
                 else:
-                        netround=((currentwage * houworked) * .75)
-                        anround=(((currentwage * houworked)*52) * .75)
+                        netround=((currentwage * houworked) *(1 - taxaskr))
+                        anround=(((currentwage * houworked)*52) * (1 - taxaskr))
                         bipayround=(currentwage * houworked)
                         angro= ((currentwage * houworked)* 52)
                         def sal_print(): 
+                                print("Your projected pay is $",currentwage,"for",houworked,"hours") #output to user
                                 print("Your Estimated Bi-Weekly pay is $",(round(bipayround,2)))
-                                print("Your projected Bi-Weekly Net is $",(round(netround,2)),"based off of 25% for Taxes and Insurance")
+                                print("Your projected Bi-Weekly Net is $",(round(netround,2)))
                                 print("Your Estimated Annual Gross is $",(round(angro,2)))   
-                                print("Your Estimated Annual Net is $",(round(anround,2)),"based off of 25% for Taxes and Insurance")
+                                print("Your Estimated Annual Net is $",(round(anround,2)))
                         calcx=calc()
                         if calcx == True:
                                 #rate=float(input("What is your hourly rate? "))#using float for partial dollar entry
-                                hours=hou()
+                                hours=houworked
                                 ot=otx()
                                 otRate=currentwage*1.5
                                 pay=((currentwage * hours)+(ot * otRate)) #calculations
-                                netan=((pay * 52) * .75)
-                                binet=((pay * 2) * .75)
+                                netan=((pay * 52) * (1 - taxaskr))
+                                binet=((pay * 2) * (1 - taxaskr))
                                 def sal_print():                              
                                         print("Your projected pay is $",pay, "for",hours+ot, "hours") #output to user
                                         print("Your projected Bi-Weekly pay is $",(pay * 2))
-                                        print("Your projected Bi-Weekly Net is $",(round(binet,2)),"based off of 25% for Taxes and Insurance")
+                                        print("Your projected Bi-Weekly Net is $",(round(binet,2)))
                                         print("Your projected Annual Gross is $",(pay * 52), "based off of working all 52 weeks")
-                                        print("Your projected Annual Net is $",(round(netan,2)),"based off of 25% for Taxes and Insurance and working all 52 weeks")
+                                        print("Your projected Annual Net is $",(round(netan,2)))
                         else:()
                 sal_printed=sal_print()
                 ansx=ans()

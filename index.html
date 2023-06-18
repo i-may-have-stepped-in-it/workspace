@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+
+<body>
+        <py-config>
+                packages=["colorama","os"]
+        </py-config>
+        <div id="Salary" class="alert alert-primary"></div>
+        <py-script src="Pay_Difference.py"></py-script>
+        <script>
+                function printsal(){ console.log( `In Python right now, sal_printed = ${pyscript.interpreter.globals.get('sal_printed')}`)
+        }
+        </script>
+        <button onclick="printsal()"> Click to get your results</button>
+
+</body>
+
+</html>
