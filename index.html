@@ -1,30 +1,12 @@
-<!-- <!doctype html>
-<html>
-
-<head>
-<meta charset="utf-8">
-<script type="text/javascript" src="brython.js"></script>
-<script type="text/javascript" src="brython_stdlib.js"></script>
-</head>
-
-<body onload="brython(1)">
-    <script type="text/python" src="Pay_Difference.py">
-    
-    </script>
-</body>
-
-</html>
-
 <!DOCTYPE html>
-<html> -->
-
+<html>
 <head>
-    <title>Pay Difference Calculator</title>
+    <title>Pay Difference Calculation</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.2/brython.js"></script>
 </head>
-<body>
-    <div id="output"></div>
-    <script type="text/python" src="./Pay_Difference.py"></script>
+<body onload="brython({debug: 1, indexedDB: false})">
+    
+    <div id="output">    </div>   
     <script>
     // Clear the output div
     document.getElementById("output").innerHTML = "";
@@ -35,12 +17,35 @@
         outputDiv.innerHTML += message + "<br>";
     };
     </script>
-    
 
-    <script>
-        window.onload = function() {
-            brython({debug: 1, indexedDB: false});
-        }
+    <script type="text/python">
+        def runPayDifference():
+
+            # Import the necessary Python modules
+            import sys
+            from io import StringIO
+
+            # Redirect the standard output to a StringIO object
+            old_stdout = sys.stdout
+            sys.stdout = new_stdout = StringIO()
+
+            # Run the Pay_Difference.py script
+            with open('Pay_Difference.py', 'r') as f:
+                exec(f.read())
+
+            # Restore the standard output
+            sys.stdout = old_stdout
+
+            # Get the output from the StringIO object
+            output = new_stdout.getvalue()
+
+            # Update the webpage with the output
+            document.getElementById("output").textContent = output
+        
     </script>
+
+    <h1>Pay Difference Calculation</h1>
+    <button onclick="runPayDifference()">Calculate Pay Difference</button>
+
 </body>
 </html>
