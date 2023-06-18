@@ -160,7 +160,9 @@ while True: #loop start
         #otRate=rate*1.54
         grossdifference=(newsalary - currentsalary)
         weekly=round((newsalary/52),2)
+        weekly=round((newsalary/52),2)
         weeklydif=round((grossdifference/52),2)
+        biweekly=round((newsalary/26),2)
         biweekly=round((newsalary/26),2)
         biweeklydiff=round((grossdifference/26),2)
         difference=((newsalary / 2080)-(currentsalary / 2080)) #calculations
@@ -198,11 +200,18 @@ while True: #loop start
                         newwage=newwa()
                         #calculations
                         grosswage=(((newwage * houworked) * 52) - ((currentwage * houworked) * 52))
+                        grosswage=(((newwage * houworked) * 52) - ((currentwage * houworked) * 52))
                         wagediff=(newwage - currentwage)
                         wagediffround=(round(wagediff,2))
                         groround=(newwage * 2080)
                         biweround=(newwage * 80)
+                        groround=(newwage * 2080)
+                        biweround=(newwage * 80)
                         #output to user
+                        def sal_print():
+                                print("Your pay difference is $",wagediffround)
+                                print("Your new Bi-Weekly Income is $",(round(biweround,2)))
+                                print("Your new Gross Annual Income is $",(round(groround,2)))
                         def sal_print():
                                 print("Your pay difference is $",wagediffround)
                                 print("Your new Bi-Weekly Income is $",(round(biweround,2)))
