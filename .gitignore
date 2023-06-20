@@ -1,2 +1,15 @@
 *.bin
 *.build
+*.brython
+*.pyscript
+*.old
+*.js
+*.bry
+*.txt
+*.html
+*.map
+*.project
+*.pyc
+*.brython2
+*.bin.icloud
+support scripts/

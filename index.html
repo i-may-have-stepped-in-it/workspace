@@ -1,51 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Pay Difference Calculation</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.2/brython.js"></script>
-</head>
-<body onload="brython({debug: 1, indexedDB: false})">
-    
-    <div id="output">    </div>   
-    <script>
-    // Clear the output div
-    document.getElementById("output").innerHTML = "";
-
-    // Redirect the console output to the webpage
-    console.log = function(message) {
-        var outputDiv = document.getElementById("output");
-        outputDiv.innerHTML += message + "<br>";
-    };
-    </script>
-
-    <script type="text/python">
-        def runPayDifference():
-
-            # Import the necessary Python modules
-            import sys
-            from io import StringIO
-
-            # Redirect the standard output to a StringIO object
-            old_stdout = sys.stdout
-            sys.stdout = new_stdout = StringIO()
-
-            # Run the Pay_Difference.py script
-            with open('Pay_Difference.py', 'r') as f:
-                exec(f.read())
-
-            # Restore the standard output
-            sys.stdout = old_stdout
-
-            # Get the output from the StringIO object
-            output = new_stdout.getvalue()
-
-            # Update the webpage with the output
-            document.getElementById("output").textContent = output
-        
-    </script>
-
-    <h1>Pay Difference Calculation</h1>
-    <button onclick="runPayDifference()">Calculate Pay Difference</button>
-
-</body>
+<html manifest="cache.manifest">
+	<!-- v45 -->
+	<head>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Dice">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<link rel="apple-touch-icon" href="ios_app.png">
+	</head>
+	<body>
+        <script type="module">
+            import * as paydiff from "./__target__/Pay_Difference.js"; window.ios_app = ios_app;
+        </script>
+	</body>	
 </html>

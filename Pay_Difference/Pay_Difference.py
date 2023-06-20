@@ -168,6 +168,7 @@ while True: #loop start
         difference=((newsalary / 2080)-(currentsalary / 2080)) #calculations
         differencerounded=(round(difference,2))
         def sal_print():
+                print(f"Your Current Hourly rage is$",currentsalary / 2080)
                 print(f"Your Hourly pay difference is $",differencerounded) #output to user
                 print(f"Your Estimated Weekly Pay Difference is $",weeklydif)
                 print(f"Your Estimated Weekly Pay is $",weekly)
@@ -223,7 +224,7 @@ while True: #loop start
                                 ot=otx()
                                 otRate=newwage*1.5
                                 pay=round(((newwage * hours)+(ot * otRate)),2) #calculations
-                                binet=((pay * 2)*(1 - taxaskr))
+                                binet=((pay * 2)*(1 - taxaskr)*2)
                                 netan=((pay * 52) * (1 - taxaskr))
                                 def sal_print():                                
                                         print("Your projected pay is $",pay,"for",hours+ot,"hours") #output to user
@@ -233,12 +234,12 @@ while True: #loop start
                                         print("Your projected Annual Net is $",(round(netan,2)))
                         else:()
                 else:
-                        netround=((currentwage * houworked) *(1 - taxaskr))
                         anround=(((currentwage * houworked)*52) * (1 - taxaskr))
-                        bipayround=(currentwage * houworked)
+                        bipayround=((currentwage * houworked)*2)
+                        netround=(bipayround *(1 - taxaskr))
                         angro= ((currentwage * houworked)* 52)
                         def sal_print(): 
-                                print("Your projected pay is $",currentwage,"for",houworked,"hours") #output to user
+                                print("Your projected pay is $",(currentwage * houworked),"for",houworked,"hours") #output to user
                                 print("Your Estimated Bi-Weekly pay is $",(round(bipayround,2)))
                                 print("Your projected Bi-Weekly Net is $",(round(netround,2)))
                                 print("Your Estimated Annual Gross is $",(round(angro,2)))   
